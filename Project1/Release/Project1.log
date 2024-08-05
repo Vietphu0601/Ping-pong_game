@@ -1,0 +1,25 @@
+﻿Build started 6/26/2024 4:42:35 PM.
+     1>Project "C:\Users\srv_training\Desktop\Project1\Project1\Project1.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\srv_training\Desktop\Project1\Release\Project1.exe" /NOLOGO /LIBPATH:"C:\SFML-2.4.1\lib" "sfml-window.lib" "sfml-system.lib" "sfml-graphics.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\srv_training\Desktop\Project1\Release\Project1.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\srv_training\Desktop\Project1\Release\Project1.lib" /MACHINE:X86 /SAFESEH Release\AI.obj
+         Release\Ball.obj
+         Release\Entity.obj
+         Release\Game.obj
+         Release\KeyBoard.obj
+         Release\main.obj
+         Release\Menu.obj
+         Release\Source.obj
+         Release\Player.obj
+         Release\PowerUp.obj
+         Release\Mobility.obj
+         Release\Source1.obj
+         Release\Wall.obj
+         Generating code
+     1>c:\users\srv_training\desktop\project1\project1\entity.cpp(25): warning C4715: 'Entity::checkColision' : not all control paths return a value
+         Finished generating code
+         Project1.vcxproj -> C:\Users\srv_training\Desktop\Project1\Release\Project1.exe
+     1>Done Building Project "C:\Users\srv_training\Desktop\Project1\Project1\Project1.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.31
