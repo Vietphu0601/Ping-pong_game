@@ -33,7 +33,7 @@ void AI::sense ()
             } 
             else if (pBall.vertex1.position.y > pPlayer.currPos.y) 
             {
-                // status = "zEuS0390 (AI): Down"; //movedown
+                 //movedown
                 pPlayer.dir = {false, true};
             } 
             else if (pBall.vertex1.position.y < pPlayer.currPos.y) 

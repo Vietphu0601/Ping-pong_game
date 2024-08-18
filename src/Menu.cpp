@@ -33,11 +33,11 @@ void button::init ()
         textObj.setPosition(buttonObj.getPosition());
 }
 
-menu::menu (sf::RenderWindow& renderWin/*, soundManager& sManager*/)
+menu::menu (sf::RenderWindow& renderWin, soundManager& sManager)
 :       isPlaying(false),
         isMenu(true),
         renderWin(renderWin)
-        // sManager(sManager)
+        sManager(sManager)
 {
         init();
 }
@@ -74,7 +74,7 @@ void menu::mouseSelect (std::vector<std::unique_ptr<button>>& listObj, const sf:
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
             {
-                // sManager.playAudio("select");
+                sManager.playAudio("select");
                 pButton->isSelected = true;
             } 
             else if (pButton->isHovered) 
@@ -98,7 +98,7 @@ void menu::mouseSelect (std::vector<std::unique_ptr<button>>& listObj, const sf:
     }
     if (isPlaying) 
     {
-        // sManager.playAudio("blip");
+        sManager.playAudio("blip");
         isPlaying = false;
     }
 }

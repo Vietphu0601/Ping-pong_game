@@ -10,7 +10,7 @@
 
 *PingPong is a classic game that simulates table tennis. Players control a paddle to hit the ball back and forth with an opponent. The objective of the game is to hit the ball in such a way that the opponent cannot return it, thereby scoring points.*
 
-Game introduction video:
+Game introduction video: https://drive.google.com/file/d/1tnAc0_29F_U9QhsG0u9SjWsasq0hDuj2/view?usp=sharing
 
 ## ***How to play***
 

@@ -45,7 +45,7 @@ private:
         Background              background;
         players                 _2players;
         Pongball                pongball;
-        // soundManager            sManager;
+        soundManager            sManager;
         AI                      AIplayer;
         std::vector<std::unique_ptr<sf::Text>>   scoresTxt;
         std::vector<std::unique_ptr<sf::Text>>   AITxt;
