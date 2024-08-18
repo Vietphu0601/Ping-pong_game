@@ -101,7 +101,7 @@ Method 2 : With Code and Buildable
 
 - Step 1 : Clone this repository or select Code -> Download Zip
 
-![](imageReview/play_ver1.png)
+![](imageReview/git.png)
 
 - Step 2 : Install MinGW. I used the MinGW-W64 GCC-14.2.0 version (build by MSYS2).
 
@@ -115,18 +115,55 @@ Method 2 : With Code and Buildable
 
  - Utilized several features in SFML: image processing, collision detection, movement, text rendering, sound, timing, mouse and keyboard handling, etc.
 
- - Employed various classes, vectors, arrays, variables, file separation, operator overloading, etc.
+ - Applied numerous techniques including classes, vectors, arrays, variables, file separation, and operator overloading.
 
- - Created character, monster objects, and buttons.
+ - Created game objects such as characters, paddles, and buttons.
 
- - Used Photoshop to edit some images as needed.
+ - Designed custom menus and buttons by displaying frames and overlaying text.
 
- - Created custom menus and buttons by displaying frames and overlaying text.
+ - Implemented file separation and state management.
 
- - Applied mathematical and physical knowledge to calculate cooldown times, velocities, and the direction of monster movements following the character, etc.
-
- - Separated files and used a state machine.
+ - Used GitHub for version control.
 
 
 ## ***References***
+
+ - SFML Installation: https://www.youtube.com/watch?v=7sg88N_bDI0&t=1025s
+
+ - SFML tutorials: https://www.youtube.com/playlist?list=PL6xSOsbVA1eb_QqMTTcql_3PdOiE928up
+
+ - Github tutorials: https://www.youtube.com/watch?v=tRZGeaHPoaw
+
+ - Source images, sounds, and fonts from Pinterest and itch.io.
+
+ - File organization and management techniques: PitiIT
+
+ ## ***Conclution***
+
+ ### ***Key Takeaways*** ###
+
+ - Developed the project entirely from scratch, with no code copied from external sources.
+
+ - Acquired valuable skills in file management and optimization, which facilitates easier updates and modifications.
+
+ - Gained a better understanding of game logic, state management, and improved code management and writing skills.
+
+  ### ***Limitations*** ###
+
+ - Code is not yet clean and organized.
+
+ - File separation is not fully optimized, and folders are not used effectively.
+
+ - Limited time resulted in only partial implementation of the desired game features.
+
+  ### ***Future Development*** ###
+
+ - Add a powerShot feature for more excitement and surprise.
+
+ - Implement ball curving mechanics for more dynamic gameplay.
+
+ - Enhance AI to be smarter, increasing difficulty beyond just speeding up the ball.
+
+ ## **Desired grade: 8.5++/10**##
+
 
