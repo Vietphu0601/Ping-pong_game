@@ -15,7 +15,7 @@ set(APP_SRC_FILES
 	src/funcs.cpp src/main.cpp 
 	src/menu.cpp src/players.cpp 
 	src/pongball.cpp src/sound.cpp 
-	src/window.cpp
+	src/window.cpp src/inputbox.cpp 
 )
 
 set(FETCHCONTENT_QUIET FALSE)

@@ -6,6 +6,8 @@
 #include <string>
 #include "rect.hpp"
 #include "sound.hpp"
+#include "menu.hpp"
+
 
 // player class
 class player 
@@ -21,7 +23,7 @@ public:
         float                   velY;
         float                   accY;
         float                   fric;
-        player                  (std::string, std::string, std::string, sf::Vector2f, soundManager&);
+        player                  (std::string, std::string, std::string, sf::Vector2f /*,soundManager&*/);
         void init               ();
         void movement           ();
         void collision          ();
@@ -37,16 +39,16 @@ public:
         Side			side;
 private:
         sf::Clock               clock;
-        soundManager&           sManager;
+        // soundManager&           sManager;
         void setSides           ();
 };
 
 // players class
-class players 
+class players
 {
 public:
         std::vector<player>     playersVec;
-        players                 (sf::RenderWindow&, soundManager&);
+        players                 (sf::RenderWindow&/*, soundManager&*/);
         ~players                ();
         void init               ();
         void setScore           (std::string, int);
@@ -59,9 +61,10 @@ public:
         void events             ();
         void updates            ();
         void renders            ();
+        int getScore            (int);
 private:
         sf::RenderWindow&       renderWin;
-        soundManager&           sManager;
+        // soundManager&           sManager;
 };
 
 #endif

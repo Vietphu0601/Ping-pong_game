@@ -28,23 +28,23 @@ void AI::sense ()
             if (pBall.vertex1.position.y > pPlayer.side.top &&
                 pBall.vertex1.position.y < pPlayer.side.bottom) 
             {
-                status = "zEuS0390 (AI): Stop";
+                // status = "zEuS0390 (AI): Stop";
                 pPlayer.dir = {false, false};
             } 
             else if (pBall.vertex1.position.y > pPlayer.currPos.y) 
             {
-                status = "zEuS0390 (AI): Down";
+                // status = "zEuS0390 (AI): Down";
                 pPlayer.dir = {false, true};
             } 
             else if (pBall.vertex1.position.y < pPlayer.currPos.y) 
             {
-                status = "zEuS0390 (AI): Up";
+                // status = "zEuS0390 (AI): Up";
                 pPlayer.dir = {true, false};
             }
         } 
         else 
         {
-            status = "zEuS0390 (AI):";
+            // status = "zEuS0390 (AI):";
             if (pPlayer.dir.up || pPlayer.dir.down) 
             {
                 pPlayer.dir = {false, false};

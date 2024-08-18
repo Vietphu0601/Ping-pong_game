@@ -19,7 +19,7 @@ button::button (const std::string& str, const sf::Color& buttonColor, const sf::
 
 void button::init () 
 {
-        if (!fontObj.loadFromFile("gfx/font/november.ttf")) 
+        if (!fontObj.loadFromFile("gfx/font/november.ttf"))
                 return;
         buttonObj.setFillColor(buttonColor);
         buttonObj.setSize(buttonSize);
@@ -33,11 +33,11 @@ void button::init ()
         textObj.setPosition(buttonObj.getPosition());
 }
 
-menu::menu (sf::RenderWindow& renderWin, soundManager& sManager)
+menu::menu (sf::RenderWindow& renderWin/*, soundManager& sManager*/)
 :       isPlaying(false),
         isMenu(true),
-        renderWin(renderWin),
-        sManager(sManager) 
+        renderWin(renderWin)
+        // sManager(sManager)
 {
         init();
 }
@@ -54,9 +54,11 @@ void menu::init ()
         mouseSprite.setPosition(sf::Vector2f(sf::Mouse::getPosition(renderWin).x, sf::Mouse::getPosition(renderWin).y));
         menuTexture.loadFromImage(menuBackground);
         menuSprite.setTexture(menuTexture);
-        createButton(menuButtons, "Player vs. CPU", sf::Color(0, 0, 0, 80), sf::Color::White, 40.0f, sf::Vector2f(380.0f, 80.0f), sf::Vector2f(320.0f, 240.0f));
-        createButton(menuButtons, "Player vs. Player", sf::Color(0, 0, 0, 80), sf::Color::White, 40.0f, sf::Vector2f(380.0f, 80.0f), sf::Vector2f(320.0f, 330.0f ));
-        createButton(menuButtons, "Exit", sf::Color(0, 0, 0, 80), sf::Color::White, 40.0f, sf::Vector2f(380.0f, 80.0f), sf::Vector2f(320.0f, 420.0f));
+        createButton(menuButtons, "Player vs. CPU", sf::Color(0, 0, 0, 80), sf::Color::White, 30.0f, sf::Vector2f(280.0f, 80.0f), sf::Vector2f(180.0f, 240.0f));
+        createButton(menuButtons, "Player vs. Player", sf::Color(0, 0, 0, 80), sf::Color::White, 30.0f, sf::Vector2f(280.0f, 80.0f), sf::Vector2f(480.0f, 240.0f));
+        createButton(menuButtons, "Set Score", sf::Color(0, 0, 0, 80), sf::Color::White, 30.0f, sf::Vector2f(160.0f, 80.0f), sf::Vector2f(130.0f, 380.0f ));
+        createButton(menuButtons, "Exit", sf::Color(0, 0, 0, 80), sf::Color::White, 30.0f, sf::Vector2f(160.0f, 80.0f), sf::Vector2f(530.0f, 380.0f));
+        createButton(menuButtons, "Level", sf::Color(0, 0, 0, 80), sf::Color::White, 30.0f, sf::Vector2f(160.0f, 80.0f), sf::Vector2f(340.0f, 380.0f));
 }
 
 void menu::mouseSelect (std::vector<std::unique_ptr<button>>& listObj, const sf::Color& hoverButtonColor, const sf::Color& hoverTextColor) 
@@ -72,7 +74,7 @@ void menu::mouseSelect (std::vector<std::unique_ptr<button>>& listObj, const sf:
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
             {
-                sManager.playAudio("select");
+                // sManager.playAudio("select");
                 pButton->isSelected = true;
             } 
             else if (pButton->isHovered) 
@@ -96,12 +98,12 @@ void menu::mouseSelect (std::vector<std::unique_ptr<button>>& listObj, const sf:
     }
     if (isPlaying) 
     {
-        sManager.playAudio("blip");
+        // sManager.playAudio("blip");
         isPlaying = false;
     }
 }
 
-std::string menu::checkSelected () 
+std::string menu::checkSelected ()
 {
     for (auto iter = menuButtons.begin(); iter != menuButtons.end(); iter++) 
     {

@@ -8,9 +8,10 @@
 #include "sound.hpp"
 #include "rect.hpp"
 
+// Main constructor of the pongball class
 Pongball::Pongball (sf::RenderWindow& renderWin,
-                    players& cplayers,
-                    soundManager& sManager)
+                    players& cplayers
+                   /* soundManager& sManager*/)
 :   effectActive(false),
     isCounting(false),
     isMoving(false),
@@ -19,7 +20,7 @@ Pongball::Pongball (sf::RenderWindow& renderWin,
     speed(constSpeed),
     acc(1.0f),
     counterVar(0.0f),
-    sManager(sManager),
+    // sManager(sManager),
     eng(time(NULL)),
     renderWin(renderWin),
     cplayers(cplayers) 
@@ -27,14 +28,16 @@ Pongball::Pongball (sf::RenderWindow& renderWin,
     init();
 }
 
+// Main deconstructor of the pong ball class
 Pongball::~Pongball () 
 {
 }
 
+// Initialization of pong ball
 void Pongball::init () 
 {
-    if (!texture.loadFromFile("gfx/pongball.png")) return;
-    if (!effectTex.loadFromFile("gfx/explode.png")) return;
+    if (!texture.loadFromFile("bin/gfx/pongball.png")) return;
+    if (!effectTex.loadFromFile("bin/gfx/explode.png")) return;
     effectSp.setTexture(effectTex);
     effectRect = sf::IntRect(0, 0, 32, 32);
     effectSp.setTextureRect(effectRect);
@@ -76,6 +79,7 @@ void Pongball::hitExplode ()
     }
 }
 
+// Handles movemenr
 void Pongball::movement () 
 {
     float deltaTime = clock.getElapsedTime().asSeconds();
@@ -129,6 +133,7 @@ void Pongball::nextPos ()
     vertex2.position = sf::Vector2f(55, player1BPoint);
 }
 
+// Handles screen collision
 void Pongball::collision () 
 {
     if (currPos.x > 640.0f) 
@@ -136,26 +141,29 @@ void Pongball::collision ()
         isCounting = true;
         speed = -constSpeed;
         restart();
-        sManager.playAudio("player1-scores");
+        // sManager.playAudio("player1-scores");
         cplayers.setScore("player1", 1);
+        // cplayers.resetScore();
+
     } 
     else if (currPos.x < 0.0f) 
     {
         isCounting = true;
         speed = constSpeed;
         restart();
-        sManager.playAudio("player2-scores");
+        // sManager.playAudio("player2-scores");
         cplayers.setScore("player2", 1);
+        // cplayers.resetScore();
     } 
     else if (currPos.y > 480.0f) 
     {
-        sManager.playAudio("table");
+        // sManager.playAudio("table");
         sprite.setPosition(currPos.x, currPos.y-texture.getSize().y/2.0f);
         ballAngle = 360.0f - ballAngle;
     } 
     else if (currPos.y < 0.0f) 
     {
-        sManager.playAudio("table");
+        // sManager.playAudio("table");
         sprite.setPosition(currPos.x, currPos.y+texture.getSize().y/2.0f);
         ballAngle = 360.0f - ballAngle;
     }
@@ -185,7 +193,7 @@ void Pongball::paddleCollide ()
                 }
                 effectSp.setPosition(currPos);
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             } 
             else if (side.top < bottom && side.bottom > bottom) 
@@ -200,7 +208,7 @@ void Pongball::paddleCollide ()
                 }
                 effectSp.setPosition(currPos);
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             }
         } 
@@ -212,7 +220,7 @@ void Pongball::paddleCollide ()
                 speed = -speed;
                 effectSp.setPosition(sf::Vector2f(side.right, currPos.y));
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             } 
             else if (side.left < right &&
@@ -223,7 +231,7 @@ void Pongball::paddleCollide ()
                 speed = -speed;
                 effectSp.setPosition(sf::Vector2f(side.left, currPos.y));
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             }
         } 
@@ -235,7 +243,7 @@ void Pongball::paddleCollide ()
                 speed = -speed;
                 effectSp.setPosition(currPos);
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             } 
             else if (side.left < right &&
@@ -245,7 +253,7 @@ void Pongball::paddleCollide ()
                 speed = -speed;
                 effectSp.setPosition(currPos);
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             }
         } 
@@ -257,7 +265,7 @@ void Pongball::paddleCollide ()
                 speed = -speed;
                 effectSp.setPosition(currPos);
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             } 
             else if (side.left < right && side.right > right) 
@@ -266,7 +274,7 @@ void Pongball::paddleCollide ()
                 speed = -speed;
                 effectSp.setPosition(currPos);
                 effectActive = true;
-                sManager.playAudio("pong");
+                // sManager.playAudio("pong");
                 randomAngle(360.0f-ballAngle-20.0f, 360.0f-ballAngle);
             }
         }
@@ -290,6 +298,7 @@ void Pongball::randomAngle (float MIN, float MAX)
     sprite.setRotation(ballAngle);
 }
 
+// Generates random vertical position for the ball
 void Pongball::randomPos () 
 {
     float xpos;
@@ -306,6 +315,7 @@ void Pongball::randomPos ()
     sprite.setPosition(currPos);
 }
 
+// Handles update
 void Pongball::update () 
 {
     hitExplode();
@@ -331,6 +341,7 @@ void Pongball::update ()
     clock.restart();
 }
 
+// Handles render
 void Pongball::render () 
 {
         if (isMoving) 

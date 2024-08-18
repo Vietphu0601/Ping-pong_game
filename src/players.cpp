@@ -7,8 +7,8 @@
 player::player (std::string id,
                 std::string filepath,
                 std::string shadowfilepath,
-                sf::Vector2f initPos,
-                soundManager& sManager)
+                sf::Vector2f initPos
+                /*soundManager& sManager*/)
 :       id(id),
         filepath(filepath),
         shadowfilepath(shadowfilepath),
@@ -21,8 +21,8 @@ player::player (std::string id,
         fric(-0.9f),
         initPos(initPos),
         currPos(initPos),
-        dir{false, false},
-        sManager(sManager) 
+        dir{false, false}
+        // sManager(sManager)
 {
     init();
 }
@@ -46,7 +46,7 @@ void player::movement ()
     {
         if (!isPlaying) 
         {
-            sManager.playAudio("player-move");
+            // sManager.playAudio("player-move");
             isPlaying = true;
         }
         accY = -speed;
@@ -55,7 +55,7 @@ void player::movement ()
     {
         if (!isPlaying) 
         {
-            sManager.playAudio("player-move");
+            // sManager.playAudio("player-move");
             isPlaying = true;
         }
         accY = speed;
@@ -121,9 +121,9 @@ void player::setSides ()
             sprite.getGlobalBounds().left+texture.getSize().x};
 }
 
-players::players (sf::RenderWindow& renderWin, soundManager& sManager):
-        renderWin(renderWin),
-        sManager(sManager) 
+players::players (sf::RenderWindow& renderWin/*, soundManager& sManager*/):
+        renderWin(renderWin)
+        // sManager(sManager)
 {
     init();
 }
@@ -138,18 +138,18 @@ void players::init ()
     playersVec.push_back(player("player1",
                                 "gfx/player1.png",
                                 "gfx/player-shadow.png",
-                                sf::Vector2f(50.0f, 240.0f),
-                                sManager));
+                                sf::Vector2f(50.0f, 240.0f)
+                                /*sManager*/));
     playersVec.push_back(player("player2",
                                 "gfx/player2.png",
                                 "gfx/player-shadow.png",
-                                sf::Vector2f(590.0f, 240.0f),
-                                sManager));
+                                sf::Vector2f(590.0f, 240.0f)
+                                /*sManager*/));
 }
 
 void players::setScore (std::string id, int score) 
 {
-    for (unsigned int i = 0; i < playersVec.size(); ++i) 
+    for (unsigned int i = 0; i < playersVec.size(); ++i)
     {
         if (id == playersVec.at(i).id) 
         {
@@ -157,12 +157,12 @@ void players::setScore (std::string id, int score)
         }
     }
 }
-
 void players::resetScore () 
 {
-    for (unsigned int i = 0; i < playersVec.size(); ++i) 
+
+    for (unsigned int i = 0; i < playersVec.size(); ++i)
     {
-        playersVec.at(i).score = 0;
+            playersVec.at(i).score = 0;
     }
 }
 
@@ -266,3 +266,5 @@ void players::renders ()
         renderWin.draw(playersVec.at(i).sprite);
     }
 }
+
+
