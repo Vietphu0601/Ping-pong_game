@@ -26,40 +26,62 @@ Enjoy the game and aim for a high score!
 
 ## ***A few images of the game***
 
+- Version 1:
+- *Menu*
+![](imageReview/menu_ver1.png)
+
+- *Play*
+
+![](imageReview/play_ver1.png)
+
+- Version 2: This version has fixed issues with the ball not running smoothly and has added images and sound to enhance the gameplay experience.
+
+- *Menu*
+![](imageReview/menu_ver2.png)
+
+- *Play*
+
+![](imageReview/play_ver2.png)
+
 ## ***Game Structure***
 
 The project structure is organized as follows:
 
-- game.cpp:
+- main.cpp:
   
-          Contains the core game logic, including the game loop, handling of game states, and interactions between different game entities.
+          The main entry point of the game. It initializes the game environment, manages the main game loop, and handles overall game state transitions.
 
 - menu.cpp:
   
           Manages the main menu, including difficulty levels, player selection, game instructions, and the option to quit the game.
-
-- keyboard.cpp:
-  
-          Handles player input through the keyboard, mapping key presses to in-game actions such as moving the paddle or pausing the game.
 - ai.cpp:
 
-          Implements the AI logic for controlling the computer player, including decision-making and movement in response to the ball's position.
+          Implements the artificial intelligence (AI) for controlling the opponent paddle, including logic for movement and difficulty levels.
 
-- ball.cpp:
+- pongball.cpp:
 
           Manages the ball's behavior, including movement, collision detection with paddles, walls, and scoring when the ball crosses the screen boundaries.
 
-- wall.cpp:
+- background.cpp:
 
-          Represents the game walls, handling collisions with the ball and ensuring the ball bounces back when it hits a wall.
+          Manages the background graphics of the game, including loading the image, setting its position, and rendering it to the screen.
 
 - player.cpp:
 
-        Manages the player's paddle, including movement and collision detection with the ball.
+          Manages the player's paddle, including movement and collision detection with the ball.
 
-- entity.cpp:
+- funcs.cpp:
 
-        Provides a base class or common functionality for all game entities, such as the ball, paddles, and AI player, including properties like position, velocity, and rendering.
+          Contains various utility functions used throughout the game, such as helper functions for calculations, configurations, or other repetitive tasks.
+
+- sound.cpp:
+
+          Manages audio effects in the game, including loading sound files, controlling playback, and adjusting volume.
+
+- window.cpp:
+
+          Responsible for creating and managing the game window, including setting up display parameters, handling window events, and rendering game graphics.        
+        
 
 
 ## ***Installation Instructions***
