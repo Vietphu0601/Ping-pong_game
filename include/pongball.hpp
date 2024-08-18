@@ -1,42 +1,59 @@
-#include "Mobility.h"
+#ifndef PONGBALL_H
+#define PONGBALL_H
 
-class Ball : public Mobility
+#include <SFML/Graphics.hpp>
+#include <random>
+#include "players.hpp"
+#include "sound.hpp"
+#include "rect.hpp"
+
+// pongball class
+class Pongball 
 {
-	private:
-
-		  sf::Texture texture[18];
-		  sf::Clock clock;
-		  sf::Sprite sprite;
-		  int ballType;
-
-	public:
-
-		
-
-		Ball(double x, double y) : Mobility(x, y){
-		    setWidth(10.f);
-			setHeight(10.f);
-		}
-
-		Ball(double x, double y, int type) : Mobility(x, y){
-		    setWidth(10.f);
-			setHeight(10.f);
-			ballType = type;
-		}
-
-
-		void setBallType(int ballType) {
-			this->ballType = ballType;
-		}
-		
-
-		void render(sf::RenderWindow *window);
-
-		void move(std::list<Entity*> listEntity);
-
-		void initBall(double dx, double dy, double vel);
-
-		void setPos(double x, double y);
-
-		void update(std::list<Entity*> listEntity);
+public:
+        bool                    effectActive;
+        bool                    isCounting;
+        bool                    isMoving;
+        float                   constSpeed;
+        float                   maxSpeed;
+        float                   speed;
+        float                   acc;
+        float                   ballAngle;
+        float                   counterVar;
+        Pongball                (sf::RenderWindow&, players&, soundManager&);
+        ~Pongball               ();
+        void init               ();
+        void hitExplode         ();
+        void nextPos            ();
+        void movement           ();
+        void collision          ();
+        void paddleCollide      ();
+        void restart            ();
+        void randomAngle        (float, float);
+        void randomPos          ();
+        void updateScore        ();
+        void update             ();
+        void render             ();
+        sf::Clock               clock;
+        sf::Clock               effectClock;
+        sf::Clock               counter;
+        sf::Sprite              sprite;
+        sf::Texture             texture;
+        Side                    side;
+        sf::Vector2f            currPos;
+        sf::Vector2f            pos;
+        sf::Vector2f            effectPos;
+        sf::Vertex              vertex1;
+        sf::Vertex              vertex2;
+        void setSides           ();
+private:
+        sf::IntRect             effectRect;
+        sf::Sprite              effectSp;
+        sf::Texture             effectTex;
+        soundManager&           sManager;
+        std::mt19937            eng;
+        sf::RenderWindow&       renderWin;
+        players&                cplayers;
 };
+
+#endif

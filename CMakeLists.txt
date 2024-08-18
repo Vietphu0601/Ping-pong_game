@@ -1,19 +1,14 @@
-# Set minimum required CMake version
 cmake_minimum_required(VERSION 3.21)
 
-# Project name and version
-project(pong_game_by_zEuS0390 VERSION 1.1.1)
+project(pong_game_by_VietPhu VERSION 2.0)
 
 option(PONG_GENERATE_INSTALLER "Generate an installer" FALSE)
 option(BUILD_SHARED_LIBS "Build Shared Libs" OFF)
 
-# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 
-# Set output directory for binaries
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
-# Define source files
 set(APP_ICON_RC "${CMAKE_SOURCE_DIR}/rc/icon.rc")
 set(APP_SRC_FILES
 	src/AI.cpp src/background.cpp 
@@ -25,7 +20,6 @@ set(APP_SRC_FILES
 
 set(FETCHCONTENT_QUIET FALSE)
 
-# Include SFML using FetchContent
 include(FetchContent)
 FetchContent_Declare(SFML
 	GIT_REPOSITORY https://github.com/SFML/SFML.git
@@ -34,22 +28,17 @@ FetchContent_Declare(SFML
 )
 FetchContent_MakeAvailable(SFML)
 
-# Configure build based on platform
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-	# Windows specific settings
 	add_executable(${PROJECT_NAME} WIN32 ${APP_SRC_FILES} $<$<PLATFORM_ID:Windows>:${APP_ICON_RC}>)
 	target_link_libraries(${PROJECT_NAME} sfml-audio sfml-graphics sfml-window sfml-system 
 		-static-libgcc -static-libstdc++ -Wl,-Bstatic -lstdc++ -lpthread -Wl,-Bdynamic)
 else()
-	# Other platforms (assuming Unix-like)
 	add_executable(${PROJECT_NAME} ${APP_SRC_FILES})
 	target_link_libraries(${PROJECT_NAME} sfml-audio sfml-graphics sfml-window sfml-system)
 endif()
 
-# Set include directories
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 
-# Copy directories and files before build
 add_custom_command(
 	TARGET ${PROJECT_NAME} 
 	PRE_BUILD
@@ -61,7 +50,6 @@ add_custom_command(
 	PRE_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR}/sfx $<TARGET_FILE_DIR:${PROJECT_NAME}>/sfx)
 
-# Additional copy for Windows (specifically openal32.dll)
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 	add_custom_command(
 		TARGET ${PROJECT_NAME}
