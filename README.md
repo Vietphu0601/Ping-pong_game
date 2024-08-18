@@ -88,28 +88,34 @@ The project structure is organized as follows:
 
 ## ***Installation Instructions***
 
-Method 1 : Without Code
+Method 1 : With Code and Buildable
 
-- Step 1 : Download the game (compressed in a .zip file) from the following link: https://github.com/Vietphu0601/ping_pong
+- Step 1 : Clone this repository or select Code -> Download Zip from the following link: https://github.com/Vietphu0601/ping_pong
 
-- Step 2 : Unzip the game into a directory
+- Step 2 : Install MinGW. I used the MinGW-W64 GCC-14.2.0 version (build by MSYS2).
+
+- Step 3 : Install GNU make and Cmake. Open the command prompt in the directory containing the Makefile and run the command make.
 
 - Step 3 : Locate the `pong.exe` file in folder bin, run, and enjoy the game.
 
 
-Method 2 : With Code and Buildable
+Method 2 : With Qt
 
 - Step 1 : Clone this repository or select Code -> Download Zip
 
 ![](imageReview/git.png)
 
-- Step 2 : Install MinGW. I used the MinGW-W64 GCC-14.2.0 version (build by MSYS2).
+- Step 2 : Install Qt and set up the Qt Creator IDE. Ensure that you have the appropriate version of the Qt framework installed.
 
-- Step 3 : Install GNU make and Cmake
+- Step 3 : Open Qt Creator, then use the "Open Project" option to open the .pro file in the project directory.
 
-- Step 4 : Open the command prompt in the directory containing the Makefile and run the command make.
+- Step 4 : Configure the build settings in Qt Creator, selecting the appropriate kit (e.g., MinGW or MSVC) based on your system setup.
 
-- Step 5 : Run pong.exe and enjoy!!
+- Step 5 : Build the project by clicking the "Build" button or pressing Ctrl+B.
+
+- Step 6 : Run the application directly from Qt Creator or navigate to the build directory and execute the generated binary (pong.exe).
+
+- Step 7 : Enjoy the game.
 
 ## ***Techniques Used***
 

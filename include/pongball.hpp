@@ -20,7 +20,7 @@ public:
         float                   acc;
         float                   ballAngle;
         float                   counterVar;
-        Pongball                (sf::RenderWindow&, players&/*, soundManager&*/);
+        Pongball                (sf::RenderWindow&, players&, soundManager&);
         ~Pongball               ();
         void init               ();
         void hitExplode         ();
@@ -50,7 +50,7 @@ private:
         sf::IntRect             effectRect;
         sf::Sprite              effectSp;
         sf::Texture             effectTex;
-        // soundManager&           sManager;
+        soundManager&           sManager;
         std::mt19937            eng;
         sf::RenderWindow&       renderWin;
         players&                cplayers;

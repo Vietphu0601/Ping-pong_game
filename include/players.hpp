@@ -23,7 +23,7 @@ public:
         float                   velY;
         float                   accY;
         float                   fric;
-        player                  (std::string, std::string, std::string, sf::Vector2f /*,soundManager&*/);
+        player                  (std::string, std::string, std::string, sf::Vector2f ,soundManager&);
         void init               ();
         void movement           ();
         void collision          ();
@@ -39,7 +39,7 @@ public:
         Side			side;
 private:
         sf::Clock               clock;
-        // soundManager&           sManager;
+        soundManager&           sManager;
         void setSides           ();
 };
 
@@ -64,7 +64,7 @@ public:
         int getScore            (int);
 private:
         sf::RenderWindow&       renderWin;
-        // soundManager&           sManager;
+        soundManager&           sManager;
 };
 
 #endif

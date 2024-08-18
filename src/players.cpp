@@ -8,7 +8,7 @@ player::player (std::string id,
                 std::string filepath,
                 std::string shadowfilepath,
                 sf::Vector2f initPos
-                /*soundManager& sManager*/)
+                soundManager& sManager)
 :       id(id),
         filepath(filepath),
         shadowfilepath(shadowfilepath),
@@ -22,7 +22,7 @@ player::player (std::string id,
         initPos(initPos),
         currPos(initPos),
         dir{false, false}
-        // sManager(sManager)
+        sManager(sManager)
 {
     init();
 }
@@ -46,7 +46,7 @@ void player::movement ()
     {
         if (!isPlaying) 
         {
-            // sManager.playAudio("player-move");
+            sManager.playAudio("player-move");
             isPlaying = true;
         }
         accY = -speed;
@@ -55,7 +55,7 @@ void player::movement ()
     {
         if (!isPlaying) 
         {
-            // sManager.playAudio("player-move");
+            sManager.playAudio("player-move");
             isPlaying = true;
         }
         accY = speed;
@@ -121,9 +121,9 @@ void player::setSides ()
             sprite.getGlobalBounds().left+texture.getSize().x};
 }
 
-players::players (sf::RenderWindow& renderWin/*, soundManager& sManager*/):
+players::players (sf::RenderWindow& renderWin, soundManager& sManager):
         renderWin(renderWin)
-        // sManager(sManager)
+        sManager(sManager)
 {
     init();
 }
@@ -139,12 +139,12 @@ void players::init ()
                                 "gfx/player1.png",
                                 "gfx/player-shadow.png",
                                 sf::Vector2f(50.0f, 240.0f)
-                                /*sManager*/));
+                                sManager));
     playersVec.push_back(player("player2",
                                 "gfx/player2.png",
                                 "gfx/player-shadow.png",
                                 sf::Vector2f(590.0f, 240.0f)
-                                /*sManager*/));
+                                sManager));
 }
 
 void players::setScore (std::string id, int score) 

@@ -6,28 +6,26 @@
 #include "players.hpp"
 #include "funcs.hpp"
 
-// Main constructor of the window class
+
 window::window (unsigned int x, unsigned int y, const std::string& titleName)
 :   isAI(false),
     isGameActive(false),
     isRunning(true),
     renderWin(sf::VideoMode(x, y), titleName, sf::Style::Titlebar),
-    gameMenu(renderWin/*, sManager*/),
+    gameMenu(renderWin, sManager),
     background(renderWin, sf::Vector2f(x/2.0f, y/2.0f)),
-    _2players(renderWin/*, sManager*/),
-    pongball(renderWin, _2players/*, sManager*/),
+    _2players(renderWin, sManager),
+    pongball(renderWin, _2players, sManager),
     AIplayer(_2players.playersVec.at(1), pongball) 
 {
     init();
 }
 
-// Main destructor of the window class
 window::~window () 
 {
     scoresTxt.clear();
 }
 
-// Initialization of objects in the game
 void window::init () 
 {
     renderWin.setFramerateLimit(120);
@@ -61,7 +59,7 @@ void window::events ()
             {
                 if (event.key.code == sf::Keyboard::Escape) 
                 {
-                    // sManager.playAudio("quit");
+                    sManager.playAudio("quit");
                     gameMenu.isMenu = true;
                     isGameActive = false;
                     pongball.restart();
@@ -126,7 +124,7 @@ void window::menuSelection ()
 
 void window::updateScores () 
 {
-    // sf::Text* text;
+    sf::Text* text;
     bool winnerFound = false;
     std::string winnerText;
         for (unsigned int i = 0; i < _2players.playersVec.size(); i++) 
@@ -230,7 +228,7 @@ void window::gameLoop ()
 void window::setScoreLimit(sf::RenderWindow &window)
 {
     InputBox inputBox(300, 50);
-    // inputBox.box.setPosition(150, 200);
+    inputBox.box.setPosition(150, 200);
 
     bool validInput = false;
 

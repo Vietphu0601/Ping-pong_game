@@ -32,7 +32,7 @@ class menu
 public:
         bool                                    isPlaying;
         bool                                    isMenu;
-        menu                                    (sf::RenderWindow&/*, soundManager&*/);
+        menu                                    (sf::RenderWindow&, soundManager&);
         void init                               ();
         void mouseSelect                        (std::vector<std::unique_ptr<button>>&, const sf::Color&, const sf::Color&);
         std::string checkSelected               ();
@@ -51,7 +51,7 @@ private:
         sf::Sprite                              menuSprite;
         sf::Sprite                              mouseSprite;
         sf::RenderWindow&                       renderWin;
-        // soundManager&                           sManager;
+        soundManager&                           sManager;
         sf::Mouse                               mouse;
 };
 
