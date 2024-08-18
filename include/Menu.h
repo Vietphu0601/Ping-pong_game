@@ -1,34 +1,58 @@
-#pragma once
+#ifndef MENU_H
+#define MENU_H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <string>
+#include <memory>
+#include "sound.hpp"
 
-
-class Menu {
+class button 
+{
 public:
-	Menu();
-	void loadMedia();
-	int HandleMouseClick(sf::Vector2f mousePos);
-	void render(sf::RenderWindow* window);
-
-	int getMenuIndex() {return menuIndex;}
-	void renderOption(sf::RenderWindow* window);
-	void renderInstruction(sf::RenderWindow* window);
-	void renderWinState(sf::RenderWindow* window, int winState, int level, int isOnePlayer);
-	void renderSelect(sf::RenderWindow* window);
-	void selectPlayer(sf::RenderWindow* window);
-	void renderTextLevel(sf::RenderWindow *window, int level);
-	
-
-private:
-	std::string menuText[16];
-	sf::Font font;
-	sf::Text menuItems[16];
-
-	sf::Texture texture;
-	sf::Text title;
-	sf::Sprite background;
-	sf::RectangleShape rectangle[16];
-	int menuIndex;
-
-	sf::Text levelText;
+        bool                                    isHovered;
+        bool                                    isSelected;
+        std::string                             str;
+        sf::Color                               buttonColor;
+        sf::Color                               textColor;
+        float                                   textCharSize;
+        sf::Vector2f                            buttonSize;
+        sf::Vector2f                            position;
+        button                                  (const std::string&, const sf::Color&, const sf::Color&, float, const sf::Vector2f&, const sf::Vector2f&);
+        void init                               ();
+public:
+        sf::RectangleShape                      buttonObj;
+        sf::Text                                textObj;
+        sf::Font                                fontObj;
 };
+
+// menu class
+class menu 
+{
+public:
+        bool                                    isPlaying;
+        bool                                    isMenu;
+        menu                                    (sf::RenderWindow&, soundManager&);
+        void init                               ();
+        void mouseSelect                        (std::vector<std::unique_ptr<button>>&, const sf::Color&, const sf::Color&);
+        std::string checkSelected               ();
+        void update                             ();
+        void renderMenu                         (std::vector<std::unique_ptr<button>>&);
+        void render                             ();
+        std::vector<std::unique_ptr<button>>    menuButtons;
+private:
+        void createButton                       (std::vector<std::unique_ptr<button>>&, const std::string&, const sf::Color&, const sf::Color&, float, const sf::Vector2f&, const sf::Vector2f&);
+        sf::Image                               gameLogo;
+        sf::Image                               menuBackground;
+        sf::Texture                             gameLogoTexture;
+        sf::Texture                             menuTexture;
+        sf::Texture                             mouseTexture;
+        sf::Sprite                              gameLogoSprite;
+        sf::Sprite                              menuSprite;
+        sf::Sprite                              mouseSprite;
+        sf::RenderWindow&                       renderWin;
+        soundManager&                           sManager;
+        sf::Mouse                               mouse;
+};
+
+#endif

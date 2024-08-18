@@ -1,29 +1,67 @@
-#include "Mobility.h"
+#ifndef PLAYERS_H
+#define PLAYERS_H
 
-class Player : public Mobility
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include <string>
+#include "rect.hpp"
+#include "sound.hpp"
+
+// player class
+class player 
 {
-    private:
-		int score;
-		sf::Font font;
-
-		int scorePosX;
-		int scorePosY;
-
-    public:
-		Player(double x, double y) : Mobility(x, y){
-			setWidth(5.f);
-			setHeight(50.f);
-			score = 0;
-			font.loadFromFile("res/font/arial.ttf");
-		}
-
-		void render(sf::RenderWindow *window);
-
-		int getScore(){return score;}
-		void setScore(int s){score = s;}
-
-		void setScorePosX(int x){scorePosX = x;}
-		void setScorePosY(int y){scorePosY = y;}
-		int getScorePosX(){return scorePosX;}
-		int getScorePosY(){return scorePosY;}
+public:
+        std::string             id;
+        std::string             filepath;
+        std::string             shadowfilepath;
+        int                     score;
+        bool                    isMoving;
+        bool                    isPlaying;
+        float                   speed;
+        float                   velY;
+        float                   accY;
+        float                   fric;
+        player                  (std::string, std::string, std::string, sf::Vector2f, soundManager&);
+        void init               ();
+        void movement           ();
+        void collision          ();
+        void restartPos         ();
+        void update             ();
+        sf::Vector2f            initPos;
+        sf::Vector2f            currPos;
+        sf::Sprite              sprite;
+        sf::Sprite              shadow;
+        sf::Texture             texture;
+        sf::Texture		shadowTex;
+        Dir                     dir;
+        Side			side;
+private:
+        sf::Clock               clock;
+        soundManager&           sManager;
+        void setSides           ();
 };
+
+// players class
+class players 
+{
+public:
+        std::vector<player>     playersVec;
+        players                 (sf::RenderWindow&, soundManager&);
+        ~players                ();
+        void init               ();
+        void setScore           (std::string, int);
+        void resetScore         ();
+        void move               (std::string, std::string);
+        void stop               (std::string);
+        void pause              ();
+        void resume             ();
+        void restart            ();
+        void events             ();
+        void updates            ();
+        void renders            ();
+private:
+        sf::RenderWindow&       renderWin;
+        soundManager&           sManager;
+};
+
+#endif
