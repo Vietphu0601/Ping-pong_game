@@ -164,6 +164,6 @@ Method 2 : With Code and Buildable
 
  - Enhance AI to be smarter, increasing difficulty beyond just speeding up the ball.
 
- ## **Desired grade: 8.5++/10**##
+ ## **Desired grade: 8.5++/10** ##
 
 
