@@ -26,17 +26,19 @@ Enjoy the game and aim for a high score!
 
 ## ***A few images of the game***
 
-- Version 1:
+Version 1:
 - *Menu*
+
 ![](imageReview/menu_ver1.png)
 
 - *Play*
 
 ![](imageReview/play_ver1.png)
 
-- Version 2: This version has fixed issues with the ball not running smoothly and has added images and sound to enhance the gameplay experience.
+Version 2: This version has fixed issues with the ball not running smoothly and has added images and sound to enhance the gameplay experience.
 
 - *Menu*
+
 ![](imageReview/menu_ver2.png)
 
 - *Play*
@@ -86,11 +88,28 @@ The project structure is organized as follows:
 
 ## ***Installation Instructions***
 
-- Step 1 :  Download the file to your computer.
+Method 1 : Without Code
 
-- Step 2 : Extract the contents of the file.
+- Step 1 : Download the game (compressed in a .zip file) from the following link: https://github.com/Vietphu0601/ping_pong
 
-- Step 3 : Locate the `pong.exe` file, open it, and enjoy the game.
+- Step 2 : Unzip the game into a directory
+
+- Step 3 : Locate the `pong.exe` file in folder bin, run, and enjoy the game.
+
+
+Method 2 : With Code and Buildable
+
+- Step 1 : Clone this repository or select Code -> Download Zip
+
+![](imageReview/play_ver1.png)
+
+- Step 2 : Install MinGW. I used the MinGW-W64 GCC-14.2.0 version (build by MSYS2).
+
+- Step 3 : Install GNU make and Cmake
+
+- Step 4 : Open the command prompt in the directory containing the Makefile and run the command make.
+
+- Step 5 : Run pong.exe and enjoy!!
 
 ## ***Techniques Used***
 
